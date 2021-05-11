@@ -1,5 +1,6 @@
 package org.launchcode.codingevents.controllers;
 
+import org.launchcode.codingevents.data.WorkoutData;
 import org.launchcode.codingevents.models.Workout;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,11 +16,10 @@ import java.util.List;
 @RequestMapping("workouts")
 public class EventController {
 
-    private static List<Workout> workouts = new ArrayList<>();
 
     @GetMapping
     public String displayAllExercises(Model model) {
-        model.addAttribute("workouts", workouts);
+        model.addAttribute("workouts", WorkoutData.getAll());
                 return "workouts/index";
     }
 
@@ -30,8 +30,27 @@ public class EventController {
 
     @PostMapping("create")
     public String createWorkout(@RequestParam String workoutName) {
-        workouts.add(new Workout(workoutName));
+        WorkoutData.add(new Workout(workoutName));
         return "redirect:";
     }
 
-}
+    @GetMapping("delete")
+    public String displayDeleteWorkoutForm(Model model) {
+        model.addAttribute("title", "Delete Workout");
+        model.addAttribute("workouts", WorkoutData.getAll());
+        return "workouts/delete";
+    }
+
+    @PostMapping("delete")
+    public String processDeleteWorkoutForm(@RequestParam(required = false) int[] workoutIds) {
+
+        if (workoutIds != null) {
+            for (int id : workoutIds) {
+                WorkoutData.remove(id);
+            }
+        }
+        return "redirect:";
+        }
+    }
+
+
