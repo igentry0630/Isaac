@@ -36,7 +36,7 @@ public class EventController {
 
     @GetMapping("delete")
     public String displayDeleteWorkoutForm(Model model) {
-        model.addAttribute("title", "Delete Workout");
+        model.addAttribute("title", "Delete Workouts");
         model.addAttribute("workouts", WorkoutData.getAll());
         return "workouts/delete";
     }
