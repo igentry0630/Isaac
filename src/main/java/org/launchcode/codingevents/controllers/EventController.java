@@ -1,5 +1,6 @@
 package org.launchcode.codingevents.controllers;
 
+import org.launchcode.codingevents.models.Workout;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,7 @@ import java.util.List;
 @RequestMapping("workouts")
 public class EventController {
 
-    private static List<String> workouts = new ArrayList<>();
+    private static List<Workout> workouts = new ArrayList<>();
 
     @GetMapping
     public String displayAllExercises(Model model) {
@@ -29,7 +30,7 @@ public class EventController {
 
     @PostMapping("create")
     public String createWorkout(@RequestParam String workoutName) {
-        workouts.add(workoutName);
+        workouts.add(new Workout(workoutName));
         return "redirect:";
     }
 
