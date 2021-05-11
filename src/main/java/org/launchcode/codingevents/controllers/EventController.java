@@ -19,7 +19,7 @@ public class EventController {
     @GetMapping
     public String displayAllExercises(Model model) {
         model.addAttribute("workouts", workouts);
-        return "workouts/index";
+                return "workouts/index";
     }
 
     @GetMapping("create")

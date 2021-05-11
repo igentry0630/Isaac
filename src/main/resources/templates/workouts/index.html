@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8"/>
     <title>Custom Workouts</title>
@@ -13,10 +13,18 @@
 
 
 <p th:unless="${workouts} and ${workouts.size()}">No Workouts</p>
-<ul>
-    <th:block th:each="workout : ${workouts}">
-        <li th:text="${workout}"></li>
-    </th:block>
-</ul>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tr th:each="workout : ${workouts}">
+        <td th:text="${workout.id}"></td>
+        <td th:text="${workout.name}"></td>
+    </tr>
+</table>
 </body>
 </html>
