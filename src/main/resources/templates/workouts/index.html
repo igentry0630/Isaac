@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Custom Workouts</title>
+</head>
+<body>
+
+<h1>Custom Workouts</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+
+<p th:unless="${workouts} and ${workouts.size()}">No Workouts</p>
+<ul>
+    <th:block th:each="workout : ${workouts}">
+        <li th:text="${workout}"></li>
+    </th:block>
+</ul>
+</body>
+</html>

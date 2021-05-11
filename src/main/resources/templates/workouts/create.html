@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Create Custom Workout</title>
+</head>
+<body>
+
+<h1>Create Workout</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<form method="post" action="/workouts/create">
+    <input type="text" name="workoutName">
+    <input type="submit" value="Create Workout">
+</form>
+
+</body>
+</html>
