@@ -1,10 +1,12 @@
 package org.launchcode.codingevents.models;
 
+
 public class Workout {
 
     private int id;
     private static int nextId = 1;
 
+    @Size(min = 3, max = 30, message = "Workout must be between 3 and 50 characters")
     private String name;
 
 
